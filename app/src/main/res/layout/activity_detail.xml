@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivProduct"
+            android:scaleType="centerCrop"
+            android:src="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:fontFamily="@font/poppins_bold"
+            tools:text="Macbook Pro M2"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="24dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginHorizontal="24dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvPrice"
+                tools:text="$500.00"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/tvDiscountPrice"
+                tools:text="$300.00"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:id="@+id/ratingBar"
+            style="@style/RatingBar"
+            android:layout_marginStart="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:numStars="5"
+            android:padding="0dp"
+            app:mrb_fillBackgroundStars="true"
+            app:mrb_progressTint="#ffc420" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:fontFamily="@font/poppins"
+            tools:text="Macbook Pro M2"
+            android:layout_marginTop="16dp"
+            android:textSize="14sp"
+            android:layout_marginHorizontal="24dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.yudikryn.productapps.ui.detail.ItemStatsView
+            android:id="@+id/tvStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="8dp"
+            app:ItemStatsViewLabel="Stock" />
+
+        <com.yudikryn.productapps.ui.detail.ItemStatsView
+            android:id="@+id/tvBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="8dp"
+            app:ItemStatsViewLabel="Brand" />
+
+        <com.yudikryn.productapps.ui.detail.ItemStatsView
+            android:id="@+id/tvCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="8dp"
+            app:ItemStatsViewLabel="Category" />
+
+        <TextView
+            android:id="@+id/tvLabelPhotos"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Photos"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="24dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProduct"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="vertical"
+            android:fillViewport="true"
+            app:spanCount="3"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLabelProduct" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
