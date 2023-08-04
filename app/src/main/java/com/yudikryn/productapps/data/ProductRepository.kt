@@ -52,6 +52,42 @@ class ProductRepository private constructor(
             emit(Result.Error(e.message.toString()))
         }
     }
+    fun getMyFavoriteProduct(): LiveData<Result<List<Product>>> = liveData {
+        emit(Result.Loading)
+        try {
+            withContext(Dispatchers.IO) {
+                val mData = MutableLiveData<List<Product>>()
+                val data: LiveData<List<Product>> = mData
+
+                val getRemoteData = apiService.getProduct().products
+                val getLocalData = localDao.getFavoriteProduct()
+
+                val favoriteProduct : ArrayList<Product> = arrayListOf()
+
+                if (getLocalData.isNotEmpty()){
+                    getRemoteData.forEach { product ->
+                        getLocalData.forEach { favorite ->
+                            if (product.id == favorite.id){
+                                product.isFavorite = true
+                                favoriteProduct.add(product)
+                            }
+                        }
+                    }
+                }
+
+                withContext(Dispatchers.Main) {
+                    mData.value = favoriteProduct
+                }
+
+                val result: LiveData<Result<List<Product>>> = data.map {Result.Success(it) }
+                emitSource(result)
+            }
+
+        } catch (e: Exception) {
+            Log.d("ProductRepository", "getMyFavoriteProduct: ${e.message.toString()} ")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
 
     fun favoriteProduct(favoriteEntity: FavoriteEntity): LiveData<Result<Long>> = liveData {
         emit(Result.Loading)

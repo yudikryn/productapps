@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.yudikryn.productapps.data.ProductRepository
 import com.yudikryn.productapps.di.Injection
 import com.yudikryn.productapps.ui.detail.DetailViewModel
-import com.yudikryn.productapps.ui.main.MainViewModel
+import com.yudikryn.productapps.ui.favorite.FavoriteViewModel
+import com.yudikryn.productapps.ui.product.ProductViewModel
 
 class ViewModelFactory private constructor(private val productRepository: ProductRepository) :
     ViewModelProvider.NewInstanceFactory() {
@@ -15,8 +16,11 @@ class ViewModelFactory private constructor(private val productRepository: Produc
         if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
             return DetailViewModel(productRepository) as T
         }
-        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return MainViewModel(productRepository) as T
+        if (modelClass.isAssignableFrom(ProductViewModel::class.java)) {
+            return ProductViewModel(productRepository) as T
+        }
+        if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
+            return FavoriteViewModel(productRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }

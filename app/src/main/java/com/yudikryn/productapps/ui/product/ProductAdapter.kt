@@ -1,4 +1,4 @@
-package com.yudikryn.productapps.ui.main
+package com.yudikryn.productapps.ui.product
 
 import android.annotation.SuppressLint
 import android.graphics.Paint
@@ -15,7 +15,7 @@ import com.yudikryn.productapps.data.remote.model.Product
 import com.yudikryn.productapps.databinding.ItemProductBinding
 import com.yudikryn.productapps.helper.FormatHelper.formatDollar
 
-class MainAdapter(private val onClick: (product: Product, action: String, position: Int) -> Unit) : ListAdapter<Product, MainAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class ProductAdapter(private val onClick: (product: Product, action: String, position: Int) -> Unit) : ListAdapter<Product, ProductAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     fun updateItem(product: Product, position: Int){
         currentList[position].isFavorite = product.isFavorite

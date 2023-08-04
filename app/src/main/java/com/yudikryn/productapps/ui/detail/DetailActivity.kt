@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -13,7 +12,6 @@ import com.yudikryn.productapps.R
 import com.yudikryn.productapps.data.remote.model.Product
 import com.yudikryn.productapps.databinding.ActivityDetailBinding
 import com.yudikryn.productapps.helper.FormatHelper
-import com.yudikryn.productapps.ui.main.MainAdapter
 import java.util.Locale
 
 class DetailActivity  : AppCompatActivity(R.layout.activity_detail) {
